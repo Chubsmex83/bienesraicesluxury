@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propiedad — Bienes Raíces Luxury</title>
+  <link rel="icon" type="image/svg+xml" href="logo2026.svg">
+  <link rel="apple-touch-icon" href="logo2026.svg">
+  <meta name="description" content="Propiedad de lujo en San Pedro Garza García — Bienes Raíces Luxury.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=3">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header is-scrolled" data-solid>
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="Bienes Raíces Luxury — San Pedro Garza García">
+        <span class="brand__logo" role="img" aria-label="Bienes Raíces Luxury"></span>
+      </a>
+      <nav class="nav">
+        <div class="nav__links">
+          <a href="index.html#destacadas" data-i18n="nav.propiedades">Propiedades</a>
+          <a href="index.html#signature" data-i18n="nav.signature">Signature</a>
+          <a href="index.html#zonas" data-i18n="nav.zonas">Zonas</a>
+          <a href="index.html#buscar" data-i18n="nav.buscar">Buscar</a>
+          <a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a>
+        </div>
+        <div class="nav__tools">
+          <div class="toggle-group">
+            <button class="js-lang" data-lang="es">ES</button>
+            <button class="js-lang" data-lang="en">EN</button>
+          </div>
+          <div class="toggle-group">
+            <button class="js-curr" data-curr="MXN">MXN</button>
+            <button class="js-curr" data-curr="USD">USD</button>
+          </div>
+          <button class="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <div class="mobile-nav">
+    <a href="index.html#destacadas" data-i18n="nav.propiedades">Propiedades</a>
+    <a href="index.html#signature" data-i18n="nav.signature">Signature</a>
+    <a href="index.html#zonas" data-i18n="nav.zonas">Zonas</a>
+    <a href="index.html#buscar" data-i18n="nav.buscar">Buscar</a>
+    <a href="index.html#contacto" data-i18n="nav.contacto">Contacto</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="detail-hero">
+    <div class="breadcrumb container" style="left:0;right:0;margin:0 auto">
+      <a href="index.html" data-i18n="detail.back">Volver</a> <span>/</span>
+      <a href="index.html#buscar" data-i18n="nav.propiedades">Propiedades</a> <span>/</span>
+      <span id="dCrumbTitle"></span>
+    </div>
+    <img id="dHeroImg" src="" alt="" style="cursor:zoom-in">
+    <div class="container detail-hero__info">
+      <span class="h-eyebrow" id="dZone"></span>
+      <h1 id="dTitle"></h1>
+      <div class="zone" id="dHeroZone"></div>
+    </div>
+    <button class="btn detail-hero__gallery-btn" id="dGalleryBtn" style="color:#fff;border-color:rgba(255,255,255,.6)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      <span data-i18n="detail.gallery">Ver galería</span>
+    </button>
+  </section>
+
+  <!-- BARRA STICKY -->
+  <div class="detail-bar">
+    <div class="container detail-bar__inner">
+      <div class="detail-bar__price" id="dPrice"></div>
+      <div class="detail-bar__actions">
+        <a class="wa-btn" id="dWaBar" href="#" target="_blank" rel="noopener" style="padding:.9em 1.4em">
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.8 5.5 2.1 7.9L.3 31.5l7.8-2.3c2.3 1.3 4.9 2 7.6 2 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5z"/></svg>
+          <span data-i18n="detail.whatsapp">WhatsApp</span>
+        </a>
+        <a class="btn btn--solid" href="#dContacto"><span data-i18n="detail.schedule">Agendar visita</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <section class="section section--tight">
+    <div class="container detail-main">
+      <div class="detail-content">
+        <div class="spec-row" id="dSpecs"></div>
+
+        <div class="detail-section">
+          <h2 data-i18n="detail.overview">Descripción</h2>
+          <p class="detail-desc" id="dDesc"></p>
+        </div>
+
+        <div class="detail-section">
+          <h2 data-i18n="detail.gallery">Galería</h2>
+          <div class="gallery-strip" id="dGallery"></div>
+        </div>
+
+        <div class="detail-section">
+          <h2 data-i18n="detail.amenities">Amenidades</h2>
+          <ul class="amenities" id="dAmenities"></ul>
+        </div>
+
+        <div class="detail-section">
+          <h2 data-i18n="detail.location">Ubicación</h2>
+          <div style="height:420px;border-radius:2px;overflow:hidden;border:1px solid var(--line)"><div id="detailMap"></div></div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR AGENTE -->
+      <aside id="dContacto">
+        <div class="agent-card">
+          <div class="agent-card__head">
+            <div class="agent-avatar" id="dAgentAvatar"></div>
+            <div>
+              <div class="n" id="dAgentName"></div>
+              <div class="r" id="dAgentRole"></div>
+            </div>
+          </div>
+          <form id="dAgentForm">
+            <div class="field"><input type="text" name="nombre" data-i18n-ph="detail.formName" placeholder="Tu nombre" required></div>
+            <div class="field"><input type="tel" name="tel" data-i18n-ph="detail.formPhone" placeholder="Teléfono"></div>
+            <div class="field"><textarea name="msg" data-i18n-ph="detail.formMsg" placeholder="Mensaje"></textarea></div>
+            <button class="btn btn--solid" type="submit"><span data-i18n="detail.schedule">Agendar visita</span></button>
+            <a class="wa-btn" id="dWa" href="#" target="_blank" rel="noopener">
+              <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.8 5.5 2.1 7.9L.3 31.5l7.8-2.3c2.3 1.3 4.9 2 7.6 2 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5z"/></svg>
+              <span data-i18n="detail.whatsapp">WhatsApp</span>
+            </a>
+          </form>
+          <div class="agent-card__mini" data-i18n="contact.sub">Un asesor senior te responderá en menos de 24 horas.</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- RELACIONADAS -->
+  <section class="section" style="background:var(--bone-2)">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="h-eyebrow" data-i18n="feat.eyebrow">Selección</span>
+        <h2 data-i18n="detail.related">También te puede interesar</h2>
+      </div>
+      <div class="grid-cards related-grid" id="dRelated"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img class="footer__logo" src="logo2026.svg" alt="Bienes Raíces Luxury" width="92" height="92">
+          <span class="brand__name" style="font-family:var(--serif);font-size:1.5rem;color:var(--bone);display:block">Bienes Raíces Luxury</span>
+          <p data-i18n="foot.tag">Bienes raíces de lujo en San Pedro Garza García.</p>
+        </div>
+        <div><h5 data-i18n="foot.explore">Explorar</h5><ul>
+          <li><a href="index.html#destacadas" data-i18n="nav.propiedades">Propiedades</a></li>
+          <li><a href="index.html#signature" data-i18n="nav.signature">Signature</a></li>
+          <li><a href="index.html#buscar" data-i18n="nav.buscar">Buscar</a></li>
+        </ul></div>
+        <div><h5 data-i18n="foot.zonas">Zonas</h5><ul id="footerZones"></ul></div>
+        <div><h5 data-i18n="foot.contacto">Contacto</h5><ul>
+          <li><a href="tel:+528112546381">+52 81 1254 6381</a></li>
+          <li><a href="mailto:sada.fabiola@gmail.com">sada.fabiola@gmail.com</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Lazaro+Cardenas+2224+Loma+Larga+Oriente+66266+San+Pedro+Garza+Garcia" target="_blank" rel="noopener">Torre 11, Lázaro Cárdenas 2224, San Pedro, N.L.</a></li>
+        </ul></div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year"></span> Bienes Raíces Luxury. <span data-i18n="foot.rights">Todos los derechos reservados.</span></span>
+        <span><a href="#" data-i18n="foot.privacy">Aviso de privacidad</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener">
+    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.8 5.5 2.1 7.9L.3 31.5l7.8-2.3c2.3 1.3 4.9 2 7.6 2 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28c-2.4 0-4.7-.7-6.7-1.9l-.5-.3-4.6 1.4 1.4-4.5-.3-.5c-1.3-2-2-4.4-2-6.9C3.3 9 9 3.3 16 3.3S28.7 9 28.7 16 23 28.5 16 28.5z"/></svg>
+    <span class="wa-label" data-i18n="wa.label">Escríbenos por WhatsApp</span>
+  </a>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" id="lbClose" aria-label="Cerrar">✕</button>
+    <button class="lightbox__nav lightbox__prev" id="lbPrev" aria-label="Anterior">‹</button>
+    <img id="lbImg" src="" alt="">
+    <button class="lightbox__nav lightbox__next" id="lbNext" aria-label="Siguiente">›</button>
+    <div class="lightbox__count" id="lbCount"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="data/data.js?v=3"></script>
+  <script src="assets/js/ui.js?v=3"></script>
+  <script src="assets/js/detail.js?v=3"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var fz = document.getElementById("footerZones");
+      function fillFz() { if (fz) fz.innerHTML = window.ZONAS.slice(0, 5).map(function (z) { return '<li><a href="index.html#buscar">' + z.nombre + "</a></li>"; }).join(""); }
+      fillFz(); document.addEventListener("i18n:changed", fillFz);
+    });
+  </script>
+</body>
+</html>

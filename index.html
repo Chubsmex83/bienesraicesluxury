@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienes Raíces Luxury — San Pedro Garza García</title>
+  <link rel="icon" type="image/svg+xml" href="logo2026.svg">
+  <link rel="apple-touch-icon" href="logo2026.svg">
+  <meta name="description" content="Bienes raíces de lujo en San Pedro Garza García. Una colección curada de residencias y departamentos de autor en las zonas más codiciadas de Monterrey.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=3">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="Bienes Raíces Luxury — San Pedro Garza García">
+        <span class="brand__logo" role="img" aria-label="Bienes Raíces Luxury"></span>
+      </a>
+      <nav class="nav">
+        <div class="nav__links">
+          <a href="#destacadas" data-i18n="nav.propiedades">Propiedades</a>
+          <a href="#signature" data-i18n="nav.signature">Signature</a>
+          <a href="#zonas" data-i18n="nav.zonas">Zonas</a>
+          <a href="#buscar" data-i18n="nav.cartera">Cartera</a>
+          <a href="#nosotros" data-i18n="nav.nosotros">Nosotros</a>
+          <a href="#contacto" data-i18n="nav.contacto">Contacto</a>
+        </div>
+        <div class="nav__tools">
+          <div class="toggle-group">
+            <button class="js-lang" data-lang="es">ES</button>
+            <button class="js-lang" data-lang="en">EN</button>
+          </div>
+          <div class="toggle-group">
+            <button class="js-curr" data-curr="MXN">MXN</button>
+            <button class="js-curr" data-curr="USD">USD</button>
+          </div>
+          <button class="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="mobile-nav">
+    <a href="#destacadas" data-i18n="nav.propiedades">Propiedades</a>
+    <a href="#signature" data-i18n="nav.signature">Signature</a>
+    <a href="#zonas" data-i18n="nav.zonas">Zonas</a>
+    <a href="#buscar" data-i18n="nav.cartera">Cartera</a>
+    <a href="#nosotros" data-i18n="nav.nosotros">Nosotros</a>
+    <a href="#contacto" data-i18n="nav.contacto">Contacto</a>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero__slides">
+      <div class="hero__slide is-active"><img src="assets/img/propiedades/casa-olinala-chipinque/foto-1.jpg" alt=""></div>
+      <div class="hero__slide"><img src="assets/img/propiedades/departamento-nube-del-valle/foto-1.jpg" alt=""></div>
+      <div class="hero__slide"><img src="assets/img/propiedades/casa-vista-real-valle-oriente/foto-1.jpg" alt=""></div>
+      <div class="hero__slide"><img src="assets/img/propiedades/penthouse-west-valle-poniente/foto-1.jpg" alt=""></div>
+    </div>
+    <div class="hero__media" style="position:absolute;inset:0;z-index:-1;pointer-events:none"></div>
+    <div class="container hero__inner">
+      <span class="h-eyebrow hero__eyebrow" data-i18n="hero.eyebrow">San Pedro Garza García · Nuevo León</span>
+      <h1 class="display" data-i18n="hero.title">Vivir entre la sierra y la sofisticación.</h1>
+      <p class="hero__sub" data-i18n="hero.sub">Una colección curada de residencias y departamentos de autor en las zonas más codiciadas de San Pedro.</p>
+
+      <div class="hero__cta">
+        <a class="btn btn--lg" href="#buscar"><span data-i18n="hero.cta">Explorar la colección</span></a>
+      </div>
+    </div>
+    <div class="scroll-cue"><span data-i18n="scroll">Scroll</span><span class="line"></span></div>
+  </section>
+
+  <!-- ============ DESTACADAS ============ -->
+  <section class="section" id="destacadas">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="h-eyebrow" data-i18n="feat.eyebrow">Selección</span>
+        <h2 data-i18n="feat.title">Propiedades destacadas</h2>
+        <p class="lead" data-i18n="feat.sub">Lo más solicitado de nuestra cartera esta temporada.</p>
+      </div>
+      <div class="grid-cards" id="featuredGrid"></div>
+      <div class="center" style="margin-top:48px">
+        <a class="btn btn--gold btn--lg" href="#buscar"><span data-i18n="feat.all">Ver todas las propiedades</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SIGNATURE ============ -->
+  <section class="section dark" id="signature">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="h-eyebrow" data-i18n="sig.eyebrow">Colección Signature</span>
+        <h2 data-i18n="sig.title">Las residencias que definen el lujo en Monterrey</h2>
+        <p class="lead" data-i18n="sig.sub">Cuatro direcciones excepcionales, tratadas con el detalle que merecen.</p>
+      </div>
+      <div id="signatureList"></div>
+    </div>
+  </section>
+
+  <!-- ============ ZONAS ============ -->
+  <section class="section" id="zonas">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="h-eyebrow" data-i18n="zonas.eyebrow">El mapa del lujo</span>
+        <h2 data-i18n="zonas.title">Explora por zonas</h2>
+        <p class="lead" data-i18n="zonas.sub">Cada colonia con su propio carácter. Encuentra la tuya.</p>
+      </div>
+      <div class="zones-grid" id="zonesGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ CARTERA / RESULTADOS ============ -->
+  <section class="section" id="buscar">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="h-eyebrow" data-i18n="cartera.eyebrow">Nuestra cartera</span>
+        <h2 data-i18n="cartera.title">Explora todas las propiedades</h2>
+      </div>
+
+      <div class="active-filter" id="activeFilter" style="display:none">
+        <span class="active-filter__label"><span data-i18n="filter.showing">Mostrando</span>: <b id="activeFilterName"></b></span>
+        <button type="button" id="activeFilterClear"><span data-i18n="filter.clear">Ver todas</span> ✕</button>
+      </div>
+
+      <div class="grid-cards" id="resultsGrid"></div>
+      <div class="empty-state" id="emptyState" style="display:none">
+        <div class="mark">∅</div>
+        <h3 data-i18n="empty.title">Sin resultados</h3>
+        <p data-i18n="empty.text">No encontramos propiedades con esos criterios.</p>
+        <button class="btn btn--gold" id="emptyReset"><span data-i18n="empty.reset">Ver todas</span></button>
+      </div>
+
+      <div class="results-fullmap reveal"><div id="resultsMap"></div></div>
+    </div>
+  </section>
+
+  <!-- ============ NOSOTROS ============ -->
+  <section class="section" id="nosotros">
+    <div class="container about">
+      <div class="about__media reveal-img">
+        <img src="assets/img/propiedades/casa-vista-real-valle-oriente/foto-3.jpg" alt="">
+        <div class="tag"><div class="n" data-count="98" data-suffix="%">0%</div><div class="l" data-i18n="about.tag">Tasa de satisfacción</div></div>
+      </div>
+      <div class="about__body reveal">
+        <span class="h-eyebrow" data-i18n="about.eyebrow">Por qué elegirnos</span>
+        <h2 style="font-size:clamp(2rem,4vw,3.4rem);margin-top:16px" data-i18n="about.title">Una boutique, no un portal.</h2>
+        <p class="lead" style="margin-top:18px" data-i18n="about.sub">Representamos un número limitado de propiedades para dedicar a cada una una atención sin concesiones.</p>
+        <div class="values">
+          <div class="value"><div class="value__num">01</div><div><h4 data-i18n="about.v1h">Curaduría exclusiva</h4><p data-i18n="about.v1p">Cada propiedad es seleccionada a mano. Sin relleno, sin listings genéricos.</p></div></div>
+          <div class="value"><div class="value__num">02</div><div><h4 data-i18n="about.v2h">Conocimiento local</h4><p data-i18n="about.v2p">Vivimos San Pedro. Conocemos cada colonia, cada torre, cada calle.</p></div></div>
+          <div class="value"><div class="value__num">03</div><div><h4 data-i18n="about.v3h">Discreción total</h4><p data-i18n="about.v3p">Operaciones confidenciales y acompañamiento de principio a fin.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIOS + PRENSA ============ -->
+  <section class="section dark">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="h-eyebrow" data-i18n="testi.eyebrow">Confianza</span>
+        <h2 data-i18n="testi.title">Lo que dicen nuestros clientes</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi reveal"><div class="quote-mark">”</div><p data-q>Encontraron exactamente lo que buscábamos en Olinalá. Un proceso impecable y profundamente humano.</p><div class="testi__who">Familia Garza Sada<span>Compra · Chipinque</span></div></div>
+        <div class="testi reveal" data-d="1"><div class="quote-mark">”</div><p data-q>El nivel de detalle y discreción es de otra liga. Vendieron mi departamento en Arboleda en semanas.</p><div class="testi__who">A. Villarreal<span>Venta · Del Valle</span></div></div>
+        <div class="testi reveal" data-d="2"><div class="quote-mark">”</div><p data-q>Asesoría honesta y conocimiento real del mercado de San Pedro. Volvería a confiar sin dudarlo.</p><div class="testi__who">M. Cantú<span>Inversión · Valle Oriente</span></div></div>
+      </div>
+      <div class="center" style="margin-top:60px"><span class="h-eyebrow" data-i18n="press.eyebrow">Como se vio en</span></div>
+      <div class="press">
+        <span>Architectural Digest</span><span>Forbes México</span><span>Robb Report</span><span>El Norte</span><span>Líder Empresarial</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="section" id="contacto">
+    <div class="container contact">
+      <div class="contact__intro reveal">
+        <span class="h-eyebrow" data-i18n="contact.eyebrow">Hablemos</span>
+        <h2 data-i18n="contact.title">Tu próxima dirección comienza con una conversación.</h2>
+        <p data-i18n="contact.sub">Cuéntanos qué buscas. Un asesor senior te responderá en menos de 24 horas.</p>
+        <div class="contact__details">
+          <a href="tel:+528112546381"><span class="k" data-i18n="contact.tel">Teléfono</span><span class="v">+52 81 1254 6381</span></a>
+          <a href="#" id="waContact"><span class="k">WhatsApp</span><span class="v">+52 81 1254 6381</span></a>
+          <a href="mailto:sada.fabiola@gmail.com"><span class="k">Email</span><span class="v">sada.fabiola@gmail.com</span></a>
+          <a href="#" id="mapsContact" target="_blank" rel="noopener"><span class="k" data-i18n="contact.oficina">Oficina</span><span class="v">Torre 11, Lázaro Cárdenas 2224, Loma Larga Oriente, C.P. 66266, San Pedro Garza García, N.L.</span></a>
+        </div>
+        <div class="contact__map reveal-img">
+          <iframe id="mapsEmbed" title="Ubicación de las oficinas" src="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <a class="contact__map-link" href="#" id="mapsLink" target="_blank" rel="noopener" data-i18n="contact.verMaps">Ver en Google Maps →</a>
+        </div>
+      </div>
+      <form class="form reveal" id="contactForm">
+        <div class="field full">
+          <label data-i18n="contact.intent">¿En qué podemos ayudarte?</label>
+          <div class="op-pills" id="intentPills">
+            <button type="button" class="is-active" data-intent="Comprar" data-i18n="contact.comprar">Comprar</button>
+            <button type="button" data-intent="Vender" data-i18n="contact.vender">Vender</button>
+            <button type="button" data-intent="Rentar" data-i18n="contact.rentar">Rentar</button>
+            <button type="button" data-intent="Invertir" data-i18n="contact.invertir">Invertir</button>
+          </div>
+        </div>
+        <div class="field"><label data-i18n="form.nombre">Nombre</label><input type="text" name="nombre" required></div>
+        <div class="field"><label data-i18n="form.email">Correo</label><input type="email" name="email" required></div>
+        <div class="field"><label data-i18n="form.tel">Teléfono</label><input type="tel" name="tel"></div>
+        <div class="field"><label data-i18n="form.zona">Zona de interés</label><select class="js-f-zona-contact" name="zona"></select></div>
+        <div class="field full"><label data-i18n="form.msg">Mensaje</label><textarea name="msg" data-i18n-ph="form.msgPlaceholder" placeholder="Estoy buscando…"></textarea></div>
+        <div class="field full"><button class="btn btn--solid btn--lg" type="submit"><span data-i18n="form.enviar">Enviar solicitud</span></button></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img class="footer__logo" src="logo2026.svg" alt="Bienes Raíces Luxury" width="92" height="92">
+          <span class="brand__name" style="font-family:var(--serif);font-size:1.5rem;display:block">Bienes Raíces Luxury</span>
+          <p data-i18n="foot.tag">Bienes raíces de lujo en San Pedro Garza García. Una experiencia editorial, dirección por dirección.</p>
+          <div class="footer__socials">
+            <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h2.5l.5-3H14V9z"/></svg></a>
+            <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 11v6"/></svg></a>
+          </div>
+        </div>
+        <div><h5 data-i18n="foot.explore">Explorar</h5><ul>
+          <li><a href="#destacadas" data-i18n="nav.propiedades">Propiedades</a></li>
+          <li><a href="#signature" data-i18n="nav.signature">Signature</a></li>
+          <li><a href="#buscar" data-i18n="nav.cartera">Cartera</a></li>
+          <li><a href="#nosotros" data-i18n="nav.nosotros">Nosotros</a></li>
+        </ul></div>
+        <div><h5 data-i18n="foot.zonas">Zonas</h5><ul id="footerZones"></ul></div>
+        <div><h5 data-i18n="foot.contacto">Contacto</h5><ul>
+          <li><a href="tel:+528112546381">+52 81 1254 6381</a></li>
+          <li><a href="mailto:sada.fabiola@gmail.com">sada.fabiola@gmail.com</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&query=Lazaro+Cardenas+2224+Loma+Larga+Oriente+66266+San+Pedro+Garza+Garcia" target="_blank" rel="noopener">Torre 11, Lázaro Cárdenas 2224,<br>Loma Larga Oriente, San Pedro, N.L.</a></li>
+        </ul></div>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year"></span> Bienes Raíces Luxury. <span data-i18n="foot.rights">Todos los derechos reservados.</span></span>
+        <span><a href="#" data-i18n="foot.privacy">Aviso de privacidad</a> · <a href="#" data-i18n="foot.terms">Términos</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener">
+    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.8 5.5 2.1 7.9L.3 31.5l7.8-2.3c2.3 1.3 4.9 2 7.6 2 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28c-2.4 0-4.7-.7-6.7-1.9l-.5-.3-4.6 1.4 1.4-4.5-.3-.5c-1.3-2-2-4.4-2-6.9C3.3 9 9 3.3 16 3.3S28.7 9 28.7 16 23 28.5 16 28.5zm7.2-9.4c-.4-.2-2.3-1.1-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3.1-1.9-1.1-1-1.9-2.3-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.4-.6.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.7c-.2 0-.6.1-1 .5-.3.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.9c.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.3-.3-.7-.5z"/></svg>
+    <span class="wa-label" data-i18n="wa.label">Escríbenos por WhatsApp</span>
+  </a>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="data/data.js?v=3"></script>
+  <script src="assets/js/ui.js?v=3"></script>
+  <script src="assets/js/home.js?v=3"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("year").textContent = new Date().getFullYear();
+      // Footer zonas
+      var fz = document.getElementById("footerZones");
+      if (fz) fz.innerHTML = window.ZONAS.slice(0, 5).map(function (z) { return '<li><a href="#buscar" data-zone="' + z.key + '">' + z.nombre + "</a></li>"; }).join("");
+      // WhatsApp links
+      var waText = "Hola, me interesa conocer más sobre las propiedades de Bienes Raíces Luxury.";
+      var wa = waLink(waText);
+      document.getElementById("waFloat").href = wa;
+      document.getElementById("waContact").href = wa;
+      // Google Maps (ubicación de oficinas)
+      var mapsUrl = window.CONFIG.mapsUrl, mapsEmbed = window.CONFIG.mapsEmbed;
+      document.getElementById("mapsContact").href = mapsUrl;
+      document.getElementById("mapsLink").href = mapsUrl;
+      document.getElementById("mapsEmbed").src = mapsEmbed;
+      // Intent pills
+      document.querySelectorAll("#intentPills button").forEach(function (b) {
+        b.addEventListener("click", function () {
+          document.querySelectorAll("#intentPills button").forEach(function (x) { x.classList.remove("is-active"); });
+          b.classList.add("is-active");
+        });
+      });
+      // Contact zona select
+      function fillContactZona() {
+        document.querySelectorAll(".js-f-zona-contact").forEach(function (s) {
+          s.innerHTML = '<option value="">' + t("f.cualquiera") + "</option>" + window.ZONAS.map(function (z) { return '<option value="' + z.nombre + '">' + z.nombre + "</option>"; }).join("");
+        });
+      }
+      fillContactZona();
+      document.addEventListener("i18n:changed", function () {
+        fillContactZona();
+        if (fz) fz.innerHTML = window.ZONAS.slice(0, 5).map(function (z) { return '<li><a href="#buscar" data-zone="' + z.key + '">' + z.nombre + "</a></li>"; }).join("");
+      });
+      // Contact form -> WhatsApp
+      document.getElementById("contactForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var f = e.target;
+        var intent = (document.querySelector("#intentPills .is-active") || {}).dataset;
+        var msg = "Hola, soy " + f.nombre.value + ". Me interesa: " + (intent ? intent.intent : "") +
+          (f.zona.value ? " en " + f.zona.value : "") + ". " + (f.msg.value || "") +
+          " | Tel: " + (f.tel.value || "—") + " | Email: " + f.email.value;
+        window.open(waLink(msg), "_blank");
+      });
+    });
+  </script>
+</body>
+</html>
