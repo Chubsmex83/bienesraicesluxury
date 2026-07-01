@@ -1,19 +1,32 @@
 # Bienes Raíces Luxury
 
 Sitio web boutique de bienes raíces de lujo para **San Pedro Garza García, Nuevo León**.
-Diseño editorial *quiet luxury*, cinematográfico e interactivo, alimentado por las **12 propiedades reales**
+Diseño editorial *quiet luxury*, cinematográfico e interactivo, alimentado por **12 propiedades reales**
 extraídas de los PDFs en `propiedades/`.
 
-Asesora: **Fabiola Sada** · +52 81 1254 6381 · sada.fabiola@gmail.com
+**🌐 En vivo:** https://www.bienesraicesluxury.com.mx
+**Asesora:** Fabiola Sada · +52 81 1254 6381 · sada.fabiola@gmail.com
+
+[![Deploy](https://img.shields.io/badge/Vercel-Producci%C3%B3n-000?logo=vercel)](https://www.bienesraicesluxury.com.mx)
 
 ---
 
-## ▸ Cómo verlo en local
+## ▸ Estado del proyecto
 
-El sitio carga datos e imágenes locales, así que **debe servirse por HTTP** (no abrir el `index.html`
+| Item | Estado |
+|------|--------|
+| Dominio | **www.bienesraicesluxury.com.mx** (SSL) · el dominio sin `www` redirige 308 → www |
+| Hosting | Vercel — producción |
+| CI/CD | **Deploy automático** en cada `git push` a `main` |
+| Repositorio | `Chubsmex83/bienesraicesluxury` |
+| Responsive | Verificado sin desbordes (360 / 390 / 414 px) |
+
+---
+
+## ▸ Cómo verlo / editarlo en local
+
+El sitio carga datos e imágenes locales, así que **debe servirse por HTTP** (no abrir `index.html`
 directo con `file://`).
-
-Desde la carpeta del proyecto:
 
 ```bash
 python -m http.server 8099      # o:  npx serve .
@@ -21,7 +34,22 @@ python -m http.server 8099      # o:  npx serve .
 
 Abre **http://localhost:8099/index.html**
 
-> Tip: puedes escribir `! python -m http.server 8099` en el prompt para levantarlo aquí mismo.
+> Tip: escribe `! python -m http.server 8099` en el prompt para levantarlo aquí mismo.
+
+---
+
+## ▸ Publicar cambios (automático)
+
+El repo de GitHub está conectado a Vercel. Para publicar:
+
+```bash
+git add -A
+git commit -m "mi cambio"
+git push            # Vercel construye y publica solo en www.bienesraicesluxury.com.mx
+```
+
+Cada rama / Pull Request genera además una **URL de preview** para revisar antes de producción.
+Deploy manual opcional: `vercel --prod`.
 
 ---
 
@@ -32,6 +60,7 @@ bienesraices/
 ├── index.html              ← Home (hero, destacadas, signature, zonas, cartera+mapa, nosotros, contacto)
 ├── propiedad.html          ← Plantilla de detalle (?id={slug})
 ├── logo2026.svg            ← Logo / emblema de marca (header, footer, favicon)
+├── vercel.json             ← Redirección apex → www (308)
 ├── data/
 │   ├── data.js             ← FUENTE ÚNICA: propiedades, zonas, asesora, CONFIG
 │   ├── propiedades.json    ← JSON central (generado desde data.js)
@@ -79,6 +108,7 @@ bienesraices/
 - **Bilingüe ES/EN** y **moneda MXN/USD** (persistidos en `localStorage`).
 - **Contacto** con formulario (Comprar/Vender/Rentar/Invertir), datos de la oficina y **Google Maps embebido**.
 - Micro-interacciones, animaciones scroll-triggered, cursor personalizado, WhatsApp flotante.
+- **Responsive**: header móvil con menú hamburguesa (toggles ES/EN·MXN/USD dentro del menú).
 
 ---
 
@@ -98,8 +128,7 @@ Después de editar propiedades o datos en `data.js`, regenera el JSON:
 node data/build-json.js
 ```
 
-> Nota: al editar CSS/JS suben la versión en los `?v=N` de `index.html` / `propiedad.html`
-> para evitar caché del navegador.
+> Al editar CSS/JS, sube la versión en los `?v=N` de `index.html` / `propiedad.html` para evitar caché del navegador.
 
 ---
 
@@ -112,20 +141,3 @@ node data/build-json.js
   Se descartaron logos y los mapas de EasyBroker durante la extracción.
 - Coordenadas del mapa: centroides aproximados de cada colonia con ligero *jitter*.
 - `?noanim` en la URL desactiva las animaciones de entrada (accesibilidad / capturas / SEO).
-
----
-
-## ▸ Deploy en Vercel
-
-Es un sitio **estático** (sin build), Vercel lo sirve tal cual desde la raíz.
-
-**Con la CLI:**
-```bash
-vercel            # preview
-vercel --prod     # producción
-```
-
-**Desde GitHub (recomendado):** importa el repositorio en https://vercel.com/new y cada `git push`
-generará un deploy automático. Framework preset: **Other** · Build command: *(ninguno)* · Output dir: `./`.
-
-<!-- deploy automático activo: 2026-07-01T06:54Z -->
