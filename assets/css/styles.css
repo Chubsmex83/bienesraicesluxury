@@ -482,7 +482,12 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; line-height: 1.04;
    ============================================================ */
 .footer { background: var(--ink); color: rgba(246,241,233,.72); padding-top: clamp(64px, 8vw, 110px); }
 .footer__top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 60px; border-bottom: 1px solid rgba(246,241,233,.12); }
-.footer__logo { width: 220px; height: 220px; margin-bottom: 18px; display: block; }
+.footer__logo {
+  display: block;
+  width: 168px; height: 168px; margin-bottom: 20px; border-radius: 50%;
+  background: #fff url("../../logo2026.svg") no-repeat center / 125% auto;
+  box-shadow: 0 10px 30px -12px rgba(0,0,0,.6);
+}
 .footer__brand .brand__name { color: var(--bone); }
 .footer__brand p { margin-top: 18px; max-width: 34ch; font-size: 0.92rem; }
 .footer h5 { font-family: var(--sans); font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-soft); margin-bottom: 18px; font-weight: 600; }
