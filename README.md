@@ -127,3 +127,5 @@ vercel --prod     # producción
 
 **Desde GitHub (recomendado):** importa el repositorio en https://vercel.com/new y cada `git push`
 generará un deploy automático. Framework preset: **Other** · Build command: *(ninguno)* · Output dir: `./`.
+
+<!-- deploy automático activo: 2026-07-01T06:54Z -->
