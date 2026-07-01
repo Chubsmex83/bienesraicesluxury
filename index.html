@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <link rel="stylesheet" href="assets/css/styles.css?v=4">
+  <link rel="stylesheet" href="assets/css/styles.css?v=5">
 </head>
 <body>
 
@@ -52,6 +52,16 @@
     <a href="#buscar" data-i18n="nav.cartera">Cartera</a>
     <a href="#nosotros" data-i18n="nav.nosotros">Nosotros</a>
     <a href="#contacto" data-i18n="nav.contacto">Contacto</a>
+    <div class="mobile-nav__tools">
+      <div class="toggle-group">
+        <button class="js-lang" data-lang="es">ES</button>
+        <button class="js-lang" data-lang="en">EN</button>
+      </div>
+      <div class="toggle-group">
+        <button class="js-curr" data-curr="MXN">MXN</button>
+        <button class="js-curr" data-curr="USD">USD</button>
+      </div>
+    </div>
   </div>
 
   <!-- ============ HERO ============ -->
@@ -254,9 +264,9 @@
 
   <!-- Scripts -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="data/data.js?v=4"></script>
-  <script src="assets/js/ui.js?v=4"></script>
-  <script src="assets/js/home.js?v=4"></script>
+  <script src="data/data.js?v=5"></script>
+  <script src="assets/js/ui.js?v=5"></script>
+  <script src="assets/js/home.js?v=5"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("year").textContent = new Date().getFullYear();
